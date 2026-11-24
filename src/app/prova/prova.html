@@ -61,7 +61,7 @@
       <span> {{ isFirst }}/{{ isLast }} {{ persona.nome }} {{ persona.cognome }} </span>
       <div
         class="cerchio"
-        [ngStyle]="{ 'background-color': persona.isOnline ? coloreOn : coloreOff }"
+        [ngClass]="{ cerchioOnline: persona.isOnline, cerchioOffline: !persona.isOnline }"
       ></div>
     </div>
   }

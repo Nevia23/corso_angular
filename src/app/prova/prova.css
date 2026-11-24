@@ -48,3 +48,11 @@
   height: 30px;
   border-radius: 50%;
 }
+
+.cerchioOnline {
+  background-color: green;
+}
+
+.cerchioOffline {
+  background-color: red;
+}
