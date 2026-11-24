@@ -1,4 +1,14 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,13 +18,20 @@ import { CommonModule } from '@angular/common';
 import { HighLight } from '../directives/high-light';
 
 @Component({
-  imports: [MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule, CommonModule, HighLight],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    CommonModule,
+    HighLight,
+  ],
   selector: 'app-prova',
   styleUrl: './prova.css',
   templateUrl: './prova.html',
 })
 export class Prova implements OnInit, OnChanges {
-
   @Input() persone: any;
   @Output() mandaDatiEvent = new EventEmitter<any>();
   // il punto escalamativo fa saltare il controllo se la variabile è null o undefined, quindi non è necessario inizializzarla
@@ -27,6 +44,8 @@ export class Prova implements OnInit, OnChanges {
   title = 'Corso Angular - Prova';
   daVedere = true;
   isAdmin = false;
+  colore = 'green';
+  defaultColor = 'yellow';
 
   ngOnInit(): void {
     console.log('Prova component initialized');
@@ -37,17 +56,17 @@ export class Prova implements OnInit, OnChanges {
     {
       nome: 'Roger',
       razza: 'Labrador',
-      descrizione: 'Cane da compagnia'
-    }
+      descrizione: 'Cane da compagnia',
+    },
   ];
 
   isDisabled = false;
 
-  hoCliccato(e : any) {
+  hoCliccato(e: any) {
     console.log('Hai cliccato il pulsante! ' + e);
   }
 
-  onInput(event : Event) {
+  onInput(event: Event) {
     //console.log('Input event triggered:', event);
     console.log((<HTMLInputElement>event.target).value);
     //console.log(event);
@@ -61,11 +80,11 @@ export class Prova implements OnInit, OnChanges {
     console.log(changes);
   }
 
-  invioDati() {    
-    this.mandaDatiEvent.emit("Questo messaggio proviene dal componente Prova");
+  invioDati() {
+    this.mandaDatiEvent.emit('Questo messaggio proviene dal componente Prova');
   }
 
   seeValue() {
-    console.log("valoreInput: " + this.valoreInput.nativeElement.value);
+    console.log('valoreInput: ' + this.valoreInput.nativeElement.value);
   }
 }

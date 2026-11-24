@@ -47,7 +47,9 @@
     <p>Non sono visibile</p>
   </div>
 } -->
-<h1 appHighLight>{{ title }}</h1>
+<h1 appHighLight [appHighLight]='colore' [defaultColor]='defaultColor'>{{ title }}</h1>
+<p>Ciao, benvenuto al {{ title }}</p>
+
 <!-- esempio for -->
 <div>
   @for (
