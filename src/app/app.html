@@ -1,2 +1,8 @@
-<app-prova></app-prova>
-<router-outlet/>
+<app-prova [persone]="persone"></app-prova>
+<button mat.raised-button color="primary" (click)="onClick()">
+  Change persone
+</button>
+<button mat.raised-button color="primary" (click)="onRestore()">
+  Restore persone
+</button>
+<router-outlet />

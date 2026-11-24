@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,10 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './prova.css',
   templateUrl: './prova.html',
 })
-export class Prova implements OnInit {
+export class Prova implements OnInit, OnChanges {
   constructor() {
     console.log('Prova component constructor called');
   }
+
+  @Input() persone: any;
 
   title = 'Corso Angular - Prova';
   daVedere = true;
@@ -50,12 +52,7 @@ export class Prova implements OnInit {
   coloreOn = 'green';
   coloreOff = 'red';
 
-  persone = [
-    {nome: 'Mario', cognome: 'Rossi', isOnline: true, colore: 'red'},
-    {nome: 'Luigi', cognome: 'Verdi', isOnline: false, colore: 'green'},
-    {nome: 'Giovanni', cognome: 'Bianchi', isOnline: true, colore: 'blue'},
-    {nome: 'Francesca', cognome: 'Neri', isOnline: false, colore: 'black'},
-    {nome: 'Anna', cognome: 'Gialli', isOnline: true, colore: 'orange'},
-    {nome: 'Bianca', cognome: 'Viola', isOnline: false, colore: 'purple'}
-  ];
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 }
