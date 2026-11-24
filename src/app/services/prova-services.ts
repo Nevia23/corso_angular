@@ -14,4 +14,8 @@ export class ProvaServices {
   getPersone() {
     return this.persone;
   }
+
+  getPersona(index: number) {
+    return this.persone[index];
+  }
 }

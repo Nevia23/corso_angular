@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProvaServices } from '../../services/prova-services';
 
 @Component({
   imports: [],
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './contact.css',
   templateUrl: './contact.html',
 })
-export class Contact {}
+export class Contact implements OnInit {
+  constructor(private serviceProva: ProvaServices) {}
+
+  ngOnInit(): void {}
+}
