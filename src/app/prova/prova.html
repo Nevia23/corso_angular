@@ -58,7 +58,7 @@
     let isFirst = $first
   ) {
     <div class="rigaPersona">
-      <p>
+      <p [ngStyle]="{color: persona.colore}">
         {{ isFirst }}/{{ isLast }} {{ persona.nome }} {{ persona.cognome }}
         @if (persona.isOnline) {
           <span class="cerchioVerde">{{ i }}</span>
