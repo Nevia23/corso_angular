@@ -4,9 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  imports: [MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule],
+  imports: [MatCardModule, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule, CommonModule],
   selector: 'app-prova',
   styleUrl: './prova.css',
   templateUrl: './prova.html',
@@ -17,6 +18,9 @@ export class Prova implements OnInit {
   }
 
   title = 'Corso Angular - Prova';
+
+  daVedere = true;
+  isAdmin = false;
 
   ngOnInit(): void {
     console.log('Prova component initialized');

@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<!-- <h1>{{ title }}</h1>
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -12,14 +12,12 @@
   />
   <mat-card-content>
     <p>
-      <!-- es. di data binding, ovvero passaggio di dati dal componente all'html -->
       {{ cani[0].descrizione }}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button matButton>LIKE</button>
     <button matButton>SHARE</button>
-    <!-- Use property binding to dynamically set values for properties and attributes. -->
     <button
       mat.raised-button
       color="primary"
@@ -32,6 +30,18 @@
 </mat-card>
 <mat-form-field class="example-full-width">
   <mat-label>Titolo</mat-label>
-  <!-- binding bidirezionale -->
   <input matInput placeholder="Titolo" [(ngModel)]="title">
-</mat-form-field>
+</mat-form-field> -->
+
+<div *ngIf="daVedere">
+  <p>Sono visibile vecchio stile</p>
+</div>
+@if (daVedere) {
+  <div>
+    <p>Sono visibile</p>
+  </div>
+} @else {
+  <div>
+    <p>Non sono visibile</p>
+  </div>
+}
