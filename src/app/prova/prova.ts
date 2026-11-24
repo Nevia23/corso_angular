@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +16,8 @@ export class Prova implements OnInit, OnChanges {
 
   @Input() persone: any;
   @Output() mandaDatiEvent = new EventEmitter<any>();
+  // il punto escalamativo fa saltare il controllo se la variabile è null o undefined, quindi non è necessario inizializzarla
+  @ViewChild('inputSaluti') valoreInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
     console.log('Prova component constructor called');
@@ -60,5 +62,9 @@ export class Prova implements OnInit, OnChanges {
 
   invioDati() {    
     this.mandaDatiEvent.emit("Questo messaggio proviene dal componente Prova");
+  }
+
+  seeValue() {
+    console.log("valoreInput: " + this.valoreInput.nativeElement.value);
   }
 }
