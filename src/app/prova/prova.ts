@@ -46,6 +46,7 @@ export class Prova implements OnInit, OnChanges {
   isAdmin = false;
   colore = 'green';
   defaultColor = 'yellow';
+  oggi = new Date();
 
   ngOnInit(): void {
     console.log('Prova component initialized');
@@ -72,7 +73,7 @@ export class Prova implements OnInit, OnChanges {
     //console.log(event);
   }
 
-  numero = 2;
+  numero = 20.34566;
   coloreOn = 'green';
   coloreOff = 'red';
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Prova } from './prova/prova';
+import { ProvaPersoneService } from './componenti/prova-persone-service/prova-persone-service';
 
 @Component({
-  imports: [RouterOutlet, Prova],
+  imports: [RouterOutlet, ProvaPersoneService],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

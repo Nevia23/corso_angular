@@ -48,7 +48,10 @@
   </div>
 } -->
 <h1 appHighLight [appHighLight]='colore' [defaultColor]='defaultColor'>{{ title }}</h1>
-<p>Ciao, benvenuto al {{ title }}</p>
+<p>Ciao, benvenuto al {{ title | uppercase }}</p>
+<p>{{ oggi | date:'dd/MM/yyyy - h:mm' }}</p>
+<p>{{ numero | number: '3.2-2' }}</p>
+<p>{{ numero | currency: 'EUR' }}</p>
 
 <!-- esempio for -->
 <div>
