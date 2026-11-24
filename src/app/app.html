@@ -1,8 +1,4 @@
-<app-prova [persone]="persone"></app-prova>
-<button mat.raised-button color="primary" (click)="onClick()">
-  Change persone
-</button>
-<button mat.raised-button color="primary" (click)="onRestore()">
-  Restore persone
-</button>
+<app-prova [persone]="persone" (mandaDatiEvent)="retriveMessaggio($event)"></app-prova>
+<button mat.raised-button color="primary" (click)="onClick()">Change persone</button>
+<button mat.raised-button color="primary" (click)="onRestore()">Restore persone</button>
 <router-outlet />

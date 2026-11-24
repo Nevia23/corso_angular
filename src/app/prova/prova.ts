@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,11 +13,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './prova.html',
 })
 export class Prova implements OnInit, OnChanges {
+
+  @Input() persone: any;
+  @Output() mandaDatiEvent = new EventEmitter<any>();
+
   constructor() {
     console.log('Prova component constructor called');
   }
-
-  @Input() persone: any;
 
   title = 'Corso Angular - Prova';
   daVedere = true;
@@ -54,5 +56,9 @@ export class Prova implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+  }
+
+  invioDati() {    
+    this.mandaDatiEvent.emit("Questo messaggio proviene dal componente Prova");
   }
 }

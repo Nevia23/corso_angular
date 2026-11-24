@@ -40,4 +40,8 @@ export class App implements OnInit{
   onRestore() {
     this.persone = this.persone1;
   }
+
+  retriveMessaggio(value: string) {
+    console.log('Messaggio ricevuto: ' + value);
+  }
 }
