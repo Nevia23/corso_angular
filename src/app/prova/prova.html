@@ -1,3 +1,4 @@
+<!-- esempi di binding -->
 <!-- <h1>{{ title }}</h1>
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
@@ -33,7 +34,8 @@
   <input matInput placeholder="Titolo" [(ngModel)]="title">
 </mat-form-field> -->
 
-<div *ngIf="daVedere">
+<!-- esempio if else -->
+<!-- <div *ngIf="daVedere">
   <p>Sono visibile vecchio stile</p>
 </div>
 @if (daVedere) {
@@ -44,4 +46,11 @@
   <div>
     <p>Non sono visibile</p>
   </div>
-}
+} -->
+
+<!-- esempio for -->
+<div>
+  @for (persona of persone; track persona; let i = $index; let isLast = $last; let isFirst = $first;) {
+    <p>{{ i }} {{isFirst}}/{{isLast}} {{ persona.nome }} {{ persona.cognome }}</p>
+  }
+</div>

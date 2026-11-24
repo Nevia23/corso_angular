@@ -18,7 +18,6 @@ export class Prova implements OnInit {
   }
 
   title = 'Corso Angular - Prova';
-
   daVedere = true;
   isAdmin = false;
 
@@ -46,4 +45,13 @@ export class Prova implements OnInit {
     console.log((<HTMLInputElement>event.target).value);
     //console.log(event);
   }
+
+  persone = [
+    {nome: 'Mario', cognome: 'Rossi', isOnline: true, colore: 'red'},
+    {nome: 'Luigi', cognome: 'Verdi', isOnline: false, colore: 'green'},
+    {nome: 'Giovanni', cognome: 'Bianchi', isOnline: true, colore: 'blue'},
+    {nome: 'Francesca', cognome: 'Neri', isOnline: false, colore: 'yellow'},
+    {nome: 'Anna', cognome: 'Gialli', isOnline: true, colore: 'orange'},
+    {nome: 'Bianca', cognome: 'Viola', isOnline: false, colore: 'purple'}
+  ];
 }
