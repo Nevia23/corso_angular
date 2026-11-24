@@ -46,6 +46,8 @@ export class Prova implements OnInit {
     //console.log(event);
   }
 
+  numero = 2;
+
   persone = [
     {nome: 'Mario', cognome: 'Rossi', isOnline: true, colore: 'red'},
     {nome: 'Luigi', cognome: 'Verdi', isOnline: false, colore: 'green'},

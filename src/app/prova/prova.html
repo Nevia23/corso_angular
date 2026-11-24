@@ -50,7 +50,40 @@
 
 <!-- esempio for -->
 <div>
-  @for (persona of persone; track persona; let i = $index; let isLast = $last; let isFirst = $first;) {
-    <p>{{ i }} {{isFirst}}/{{isLast}} {{ persona.nome }} {{ persona.cognome }}</p>
+  @for (
+    persona of persone;
+    track persona;
+    let i = $index;
+    let isLast = $last;
+    let isFirst = $first
+  ) {
+    <div class="rigaPersona">
+      <p>
+        {{ isFirst }}/{{ isLast }} {{ persona.nome }} {{ persona.cognome }}
+        @if (persona.isOnline) {
+          <span class="cerchioVerde">{{ i }}</span>
+        } @else {
+          <span class="cerchioRosso">{{ i }}</span>
+        }
+      </p>
+    </div>
   }
 </div>
+
+@switch (numero) {
+  @case (1) {
+    <p>Uno</p>
+  }
+  @case (2) {
+    <p>Due</p>
+  }
+  @case (3) {
+    <p>Tre</p>
+  }
+  @case (4) {
+    <p>Quattro</p>
+  }
+  @default {
+    <p>Default</p>
+  }
+}
