@@ -1,3 +1,4 @@
+<h1>{{ title }}</h1>
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
@@ -19,10 +20,18 @@
     <button matButton>LIKE</button>
     <button matButton>SHARE</button>
     <!-- Use property binding to dynamically set values for properties and attributes. -->
-    <button mat.raised-button color="primary" [disabled]="isDisabled" (click)="hoCliccato('Sono felice')">Test</button>
- </mat-card-actions>
-   </mat-card>
-  <mat-form-field class="example-full-width">
-  <mat-label>Input</mat-label>
-  <input matInput placeholder="Placeholder" (input)="onInput($event)">
-  </mat-form-field>
+    <button
+      mat.raised-button
+      color="primary"
+      [disabled]="isDisabled"
+      (click)="hoCliccato('Sono felice')"
+    >
+      Test
+    </button>
+  </mat-card-actions>
+</mat-card>
+<mat-form-field class="example-full-width">
+  <mat-label>Titolo</mat-label>
+  <!-- binding bidirezionale -->
+  <input matInput placeholder="Titolo" [(ngModel)]="title">
+</mat-form-field>

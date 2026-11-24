@@ -16,6 +16,8 @@ export class Prova implements OnInit {
     console.log('Prova component constructor called');
   }
 
+  title = 'Corso Angular - Prova';
+
   ngOnInit(): void {
     console.log('Prova component initialized');
   }
@@ -37,7 +39,7 @@ export class Prova implements OnInit {
 
   onInput(event : Event) {
     //console.log('Input event triggered:', event);
-    //console.log((<HTMLInputElement>event.target).value);
+    console.log((<HTMLInputElement>event.target).value);
     //console.log(event);
   }
 }
