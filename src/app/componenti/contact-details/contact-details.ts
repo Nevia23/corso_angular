@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { PersoneServices } from '../../services/persone-services';
@@ -24,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './contact-details.html',
 })
 export class ContactDetails implements OnInit {
-  id: number;
+  private id: number;
   persona = signal<any | null>(null);
   updateForm: FormGroup = new FormGroup({
     nome: new FormControl(null, Validators.required),
@@ -36,6 +36,7 @@ export class ContactDetails implements OnInit {
   constructor(
     private service: PersoneServices,
     private route: ActivatedRoute,
+    private routing: Router,
   ) {}
 
   ngOnInit(): void {
@@ -53,10 +54,31 @@ export class ContactDetails implements OnInit {
         },
         error: (r: any) => {
           console.log(r);
-        }
+        },
       });
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    // inizializzo json con un id (dato obbligatorio)
+    const updateBody: any = { id: this.id };
+    // se qualcuno ha toccato i parametri, li carico in json
+    if (this.updateForm.controls['nome'].dirty) updateBody.nome = this.updateForm.value.nome;
+    if (this.updateForm.controls['cognome'].dirty)
+      updateBody.cognome = this.updateForm.value.cognome;
+    if (this.updateForm.controls['email'].dirty) updateBody.email = this.updateForm.value.email;
+    if (this.updateForm.controls['colore'].dirty) updateBody.colore = this.updateForm.value.colore;
+
+    console.log(updateBody);
+
+    this.service.update(updateBody).subscribe({
+      next: (r: any) => {
+        console.log(r.msg);
+        this.routing.navigate(['contact']);
+      },
+      error: (r: any) => {
+        console.log(r);
+      },
+    });
+  }
 }
