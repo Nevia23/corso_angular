@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
@@ -8,6 +8,8 @@ import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { DeletePersonaDialog } from '../../dialogs/delete-persona-dialog/delete-persona-dialog';
 
 @Component({
   imports: [
@@ -33,6 +35,8 @@ export class ContactDetails implements OnInit {
     colore: new FormControl(),
   });
 
+  readonly dialog = inject(MatDialog);
+
   constructor(
     private service: PersoneServices,
     private route: ActivatedRoute,
@@ -53,7 +57,8 @@ export class ContactDetails implements OnInit {
           });
         },
         error: (r: any) => {
-          console.log(r);
+          alert(r.error.msg);
+          this.routing.navigate(['contact']);
         },
       });
     });
@@ -84,5 +89,34 @@ export class ContactDetails implements OnInit {
 
   onAnnul() {
     this.routing.navigate(['contact']);
+  }
+
+  onDelete() {
+    const enterAnimationDuration: string = '1000ms';
+    const exitAnimationDuration: string = '1000ms';
+
+    const dialogRef = this.dialog.open(DeletePersonaDialog, {
+      width: '550px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        persona: this.persona(),
+      },
+    });
+    dialogRef.afterClosed().subscribe((resp) => {
+      if (resp === 'si') this.deleteAction();
+    });
+  }
+
+  deleteAction() {
+    console.log('delete ' + this.id);
+    this.service.delete(this.id).subscribe({
+      next: (r: any) => {
+        this.routing.navigate(['contact']);
+      },
+      error: (r:any) => {
+        console.log(r.msg);
+      }
+    });
   }
 }

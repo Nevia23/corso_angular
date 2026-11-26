@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>Cancellazione di {{ persona.nome }} {{ persona.cognome }}</h2>
+<mat-dialog-content> SeI sIcUrO dI vOlEr ElImInArE lA pErSoNa? </mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="optionSelected('no')">No</button>
+  <button matButton (click)="optionSelected('si')">Sì</button>
+</mat-dialog-actions>

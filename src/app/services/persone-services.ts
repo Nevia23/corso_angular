@@ -30,4 +30,8 @@ export class PersoneServices {
   update(body: {}) {
     return this.http.patch(this.url + 'update', body).pipe(tap(() => this.list()));
   }
+
+  delete(id: number) {
+    return this.http.delete(this.url + 'delete/' + id).pipe(tap(() => this.list()));
+  }
 }

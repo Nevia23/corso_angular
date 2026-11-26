@@ -36,6 +36,7 @@
         <div class="button-group">
           <button mat-raised-button color="primary" type="button" (click)="onAnnul()">Annulla</button>
           <button mat-raised-button color="primary" type="submit" [disabled]="!updateForm.valid">Aggiorna</button>
+          <button mat-raised-button style="background-color: tomato;" type="button" (click)="onDelete()">Elimina</button>
         </div>
       </form>
     </div>
