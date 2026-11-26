@@ -1,13 +1,32 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { inject, Service, signal } from '@angular/core';
 
 @Service()
 export class PersoneServices {
   url = 'http://localhost:9090/rest/persone/';
 
+  persone = signal<any[]>([]);
+
   private http = inject(HttpClient);
 
+  list() {
+    return this.http.get(this.url + "list").subscribe({
+      next: ((resp: any) => {
+        this.persone.set(resp);
+      })
+    })
+  }
+
+  getById(id: number) {
+    let params = new HttpParams().set('id', id);
+    return this.http.get(this.url + 'getById', { params });
+  }
+
   create(body: {}) {
-    return this.http.post(this.url + "create", body);
+    return this.http.post(this.url + 'create', body);
+  }
+
+  update(body: {}) {
+    return this.http.patch(this.url + 'update', body);
   }
 }
