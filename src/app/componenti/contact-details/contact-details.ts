@@ -81,4 +81,8 @@ export class ContactDetails implements OnInit {
       },
     });
   }
+
+  onAnnul() {
+    this.routing.navigate(['contact']);
+  }
 }
