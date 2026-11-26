@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Service, signal } from '@angular/core';
+import { tap } from 'rxjs';
 
 @Service()
 export class PersoneServices {
@@ -10,11 +11,11 @@ export class PersoneServices {
   private http = inject(HttpClient);
 
   list() {
-    return this.http.get(this.url + "list").subscribe({
-      next: ((resp: any) => {
+    return this.http.get(this.url + 'list').subscribe({
+      next: (resp: any) => {
         this.persone.set(resp);
-      })
-    })
+      },
+    });
   }
 
   getById(id: number) {
@@ -23,10 +24,10 @@ export class PersoneServices {
   }
 
   create(body: {}) {
-    return this.http.post(this.url + 'create', body);
+    return this.http.post(this.url + 'create', body).pipe(tap(() => this.list()));
   }
 
   update(body: {}) {
-    return this.http.patch(this.url + 'update', body);
+    return this.http.patch(this.url + 'update', body).pipe(tap(() => this.list()));
   }
 }

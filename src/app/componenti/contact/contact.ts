@@ -11,19 +11,13 @@ import { PersoneServices } from '../../services/persone-services';
   templateUrl: './contact.html',
 })
 export class Contact implements OnInit {
-  persone: any;
+  persone;
 
-  constructor(private service: PersoneServices) {}
-
+  constructor(private service: PersoneServices) {
+    this.persone = this.service.persone;
+  }
   // ngOnInit è un metodo del ciclo di vita del componente che viene chiamato dopo che il componente è stato inizializzato
   ngOnInit(): void {
-    this.service.list().subscribe({
-      next: (r: any) => {
-        this.persone = r;
-      },
-      error: (r: any) => {
-        console.log(r);
-      },
-    });
+    this.service.list();
   }
 }
