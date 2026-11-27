@@ -11,4 +11,9 @@ export class UtenteServices {
     console.log(body);
     return this.http.post(this.url + 'login', body);
   }
+
+  create(body: {}) {
+    console.log(body);
+    return this.http.post(this.url + 'create', body);
+  }
 }
